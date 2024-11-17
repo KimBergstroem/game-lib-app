@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import GameData from "@/api/GameData";
 import Filter from "@/components/Filter";
@@ -10,6 +10,8 @@ const GameList = () => {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadGames = async () => {
@@ -39,6 +41,7 @@ const GameList = () => {
           className="px-3 py-1.5 text-sm"
           size="small"
           fullWidth
+          onClick={() => navigate(`/game/${game.id}`)}
         >
           View Details
         </Button>

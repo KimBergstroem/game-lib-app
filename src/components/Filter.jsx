@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import GameData from "@/api/GameData";
 import Button from "@/components/Button";
 
-const Filter = ({ setSearchParams }) => {
+const Filter = ({ setSearchParams, setIsLoading }) => {
   const [search, setSearch] = useState("");
   const [genres, setGenres] = useState([]);
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -23,6 +23,7 @@ const Filter = ({ setSearchParams }) => {
   };
 
   const handleFilter = async (genre) => {
+    setIsLoading(true);
     const dates = {
       2024: "2024-01-01,2024-12-31",
       2023: "2023-01-01,2023-12-31",
@@ -44,14 +45,17 @@ const Filter = ({ setSearchParams }) => {
       });
       setSearchParams(filteredGames);
     }
+    setIsLoading(false);
   };
 
   const handleYearChange = async (event) => {
+    setIsLoading(true);
     const year = event.target.value;
     setSelectedYear(year);
     const dates = `${year}-01-01,${year}-12-31`;
     const games = await GameData.getGames({ dates });
     setSearchParams(games);
+    setIsLoading(false);
   };
 
   return (

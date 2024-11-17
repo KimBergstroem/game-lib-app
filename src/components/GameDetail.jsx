@@ -3,20 +3,24 @@ import { useState, useEffect } from "react";
 
 import GameData from "@/api/GameData";
 import Button from "@/components/Button";
+import GameDetailSkeleton from "@/components/skeletons/GameDetailSkeleton";
 
 const GameDetail = () => {
   const { id } = useParams();
   const [game, setGame] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadGameDetails = async () => {
+      setIsLoading(true);
       const gameData = await GameData.getGameDetails(id);
       setGame(gameData);
+      setIsLoading(false);
     };
     loadGameDetails();
   }, [id]);
 
-  if (!game) return <div>Laddar...</div>;
+  if (isLoading) return <GameDetailSkeleton />;
 
   return (
     <div className="container mx-auto p-6 max-w-5xl">

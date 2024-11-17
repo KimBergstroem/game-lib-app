@@ -4,15 +4,18 @@ import { Link } from "react-router-dom";
 import GameData from "@/api/GameData";
 import Filter from "@/components/Filter";
 import Button from "@/components/Button";
+import GameListSkeleton from "@/components/skeletons/GameListSkeleton";
 
 const GameList = () => {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadGames = async () => {
       const gamesData = await GameData.getGames();
       setGames(gamesData);
+      setIsLoading(false);
     };
     loadGames();
   }, []);
@@ -43,10 +46,24 @@ const GameList = () => {
     </div>
   );
 
+  if (isLoading) {
+    return (
+      <>
+        <div className="m-24">
+          <Filter
+            setSearchParams={setSearchParams}
+            setIsLoading={setIsLoading}
+          />
+        </div>
+        <GameListSkeleton />
+      </>
+    );
+  }
+
   return (
     <>
       <div className="m-24">
-        <Filter setSearchParams={setSearchParams} />
+        <Filter setSearchParams={setSearchParams} setIsLoading={setIsLoading} />
       </div>
       <div className="m-24 rounded-md grid grid-cols-4 gap-10">
         {(searchParams || games).map((game) => (

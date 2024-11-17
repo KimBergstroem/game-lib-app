@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import GameData from "@/api/GameData";
+import Button from "@/components/Button";
 
 const GameDetail = () => {
   const { id } = useParams();
@@ -29,31 +30,32 @@ const GameDetail = () => {
         />
       </div>
 
-      <div className="flex flex-wrap gap-6 text-white my-6">
-        <div className="bg-gray-800 rounded-full px-4 py-2">
+      <div className="flex flex-wrap items-center justify-start gap-6 text-white my-6">
+        <div className="bg-gray-800 rounded-full px-4 py-2 flex items-center">
           <span className="text-gray-400">Rating:</span>
           <span className="font-bold text-lg ml-2">{game.rating}</span>
         </div>
 
-        <div className="flex gap-2 flex-wrap px-4 py-2">
+        <div className="flex gap-2 flex-wrap items-center justify-center">
           {game.platforms.map((platform) => (
             <span
               key={platform.platform.id}
-              className="bg-blue-900 px-3 py-1 rounded-full"
+              className="badge flex items-center"
             >
               {platform.platform.name}
             </span>
           ))}
         </div>
 
-        <div className="flex gap-2 flex-wrap px-4 py-2">
+        <div className="flex gap-2 flex-wrap items-center justify-center">
           {game.genres.map((genre) => (
-            <span
+            <Button
               key={genre.id}
-              className="bg-indigo-900 px-3 py-1 rounded-full text-sm"
+              variant="primary"
+              className="flex items-center"
             >
               {genre.name}
-            </span>
+            </Button>
           ))}
         </div>
       </div>

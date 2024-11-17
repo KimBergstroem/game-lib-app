@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+    background-color: #01223d;
+  }
+}
+
+@layer components {
+  .badge {
+    @apply bg-blue-900 px-4 py-2 rounded-full text-white;
+  }
+
+  .input-search {
+    @apply bg-gray-800 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-900;
+  }
+}

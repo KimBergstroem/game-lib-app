@@ -7,6 +7,8 @@ const DEFAULT_PARAMS = {
   page_size: "20",
 };
 
+const SELECTED_GENRE_IDS = [4, 51, 3, 5, 2, 7];
+
 const fetchFromAPI = async (endpoint, params = {}) => {
   try {
     const queryParams = new URLSearchParams({
@@ -40,7 +42,8 @@ const GameData = {
 
   getGenres: async () => {
     const data = await fetchFromAPI("/genres");
-    return data?.results || [];
+    const results = data?.results || [];
+    return results.filter((genre) => SELECTED_GENRE_IDS.includes(genre.id));
   },
 };
 

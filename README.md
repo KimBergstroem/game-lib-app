@@ -1,8 +1,32 @@
-# React + Vite
+# First-React-Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+FrontEnd client side of this project. It is built with
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Vite
+- React
+- React Router
+- Tailwind CSS
+- React Query
+- ESLint
+- Prettier
+- Here you have the list in [package.json](package.json)
+
+## Installation
+
+1. Navigate to the project directory:
+   ```bash
+   cd client
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+## Running the Application
+
+1. To start the application in development mode, run:
+   ```bash
+   npm run dev
+   ```

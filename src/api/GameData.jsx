@@ -3,7 +3,6 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 const DEFAULT_PARAMS = {
   platforms: "4",
-  dates: "2024-01-01,2024-11-15",
   page_size: "20",
 };
 

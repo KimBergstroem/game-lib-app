@@ -12,7 +12,8 @@ const Button = ({
     secondary: "bg-gray-800 hover:bg-gray-700",
   };
 
-  const baseStyles = "text-white px-4 py-2 rounded-full transition-colors";
+  const baseStyles =
+    "text-white px-3 py-2 rounded-full transition-colors text-sm break-words text-center";
   const variantStyle = variants[variant];
   const width = fullWidth ? "w-full" : "";
   const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "";

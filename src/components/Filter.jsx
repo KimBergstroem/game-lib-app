@@ -59,8 +59,8 @@ const Filter = ({ setSearchParams, setIsLoading }) => {
   };
 
   return (
-    <div className="flex items-center justify-start">
-      <form onSubmit={handleSearch} className="relative mr-10">
+    <div className="flex flex-col items-center justify-start gap-4 md:flex-row">
+      <form onSubmit={handleSearch} className="relative mb-4 md:mb-0 md:mr-10">
         <input
           type="text"
           placeholder="Search..."
@@ -77,28 +77,37 @@ const Filter = ({ setSearchParams, setIsLoading }) => {
         </Button>
       </form>
 
-      <div className="flex gap-2">
-        <Button variant="secondary" onClick={() => handleFilter("all")}>
+      <div className="grid grid-cols-2 gap-2 w-full md:flex md:flex-row md:w-auto md:gap-4">
+        <Button
+          variant="secondary"
+          onClick={() => handleFilter("all")}
+          className="w-full md:w-auto min-h-[40px] px-2"
+        >
           Alla
         </Button>
         {genres.map((genre) => (
-          <Button key={genre.id} onClick={() => handleFilter(genre.id)}>
+          <Button
+            key={genre.id}
+            onClick={() => handleFilter(genre.id)}
+            className="w-full md:w-auto min-h-[40px] px-2"
+          >
             {genre.name}
           </Button>
         ))}
       </div>
-      <div>
+
+      <div className="mt-4 md:mt-0">
         <select
           value={selectedYear}
           onChange={handleYearChange}
-          className="ml-4 bg-gray-800 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-900"
+          className="w-full md:ml-4 bg-gray-800 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-900"
         >
           <option value="2024">2024</option>
           <option value="2023">2023</option>
-          <option value="2023">2022</option>
-          <option value="2023">2021</option>
-          <option value="2023">2020</option>
-          <option value="2023">2019</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
         </select>
       </div>
     </div>
